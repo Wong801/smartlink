@@ -1,5 +1,7 @@
 # smartlink
 
+note: you can't access next page without submit data
+
 ## Project setup
 ```
 npm install
