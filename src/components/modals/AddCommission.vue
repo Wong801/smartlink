@@ -35,7 +35,10 @@ export default {
   },
   data() {
     return {
-      newKomisi: {},
+      newKomisi: {
+        nama: '',
+        nominal: ''
+      },
       newId: 1
     }
   },
@@ -47,14 +50,20 @@ export default {
   },
   methods: {
     tambahKomisi() {
-      const postKomisi = { 
+      if(this.newKomisi.nama === '' || this.newKomisi.nominal === '' ) {
+        alert('nama atau nominal tidak boleh dikosongi')
+        
+      } else {
+        const postKomisi = {
         id: this.newId++,
         nama: this.newKomisi.nama,
         nominal: parseInt(this.newKomisi.nominal)
+        }
+
+        this.save(postKomisi)
+        this.newKomisi = {}
+        this.$emit('close-add-komisi')
       }
-      this.save(postKomisi)
-      this.newKomisi = {}
-      this.$emit('close-add-komisi')
     }
   }
 }

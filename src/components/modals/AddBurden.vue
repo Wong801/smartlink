@@ -37,7 +37,10 @@ export default {
   },
   data() {
     return {
-      newTanggungan: {},
+      newTanggungan: {
+        nama: '',
+        nominal: ''
+      },
       newId: 1
     }
   },
@@ -50,15 +53,20 @@ export default {
   },
   methods: {
     tambahTanggungan() {
-      const postTanggungan = { 
-        id: this.newId++,
-        nama: this.newTanggungan.nama,
-        nominal: parseInt(this.newTanggungan.nominal),
-        keterangan: this.newTanggungan.keterangan
+      if(this.newTanggungan.nama === '' || this.newTanggungan.nominal === '') {
+        alert('nama atau nominal tidak boleh dikosongi')
+      } else {
+        const postTanggungan = { 
+          id: this.newId++,
+          nama: this.newTanggungan.nama,
+          nominal: parseInt(this.newTanggungan.nominal),
+          keterangan: this.newTanggungan.keterangan
+        }
+
+        this.save(postTanggungan)
+        this.newTanggungan = {}
+        this.$emit('close-add-tanggungan')
       }
-      this.save(postTanggungan)
-      this.newTanggungan = {}
-      this.$emit('close-add-tanggungan')
     }
   }
 }
