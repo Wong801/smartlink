@@ -71,7 +71,7 @@
             <h1 class="text-lg font-semibold">{{ item.nama }}</h1>
             <div class="flex py-2">
               <h1 class="text-lg font-semibold">{{ item.nominal | currency }}</h1>
-              <div @click="toggleEditKomisi = !toggleEditKomisi"><EditButtonBlue /></div>
+              <div @click="editKomisi(item)"><EditButtonBlue /></div>
             </div>
           </div>
         </div>
@@ -340,13 +340,13 @@ export default {
     komisi() {
       let komisi = this.allInquirys.komisi
       let item = this.idKomisi 
-      let obj = komisi.find((x) => x.id === item.id)
+      let obj = komisi.find((x) => x.id === item)
       return obj
     },
     tanggungan() {
       let tanggungan = this.allInquirys.tanggungan
       let item = this.idTanggungan
-      let obj = tanggungan.find((x) => x.id === item.id)
+      let obj = tanggungan.find((x) => x.id === item)
       return obj
     }
   },
