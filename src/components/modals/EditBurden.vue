@@ -31,7 +31,7 @@
 import Header from '../Header'
 
 export default {
-  name: 'AddBurden',
+  name: 'EditBurden',
   components: {
     Header
   },
